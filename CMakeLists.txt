@@ -1,11 +1,11 @@
 #files
 
 file(GLOB EssexEngineWindowDaemon_HEADERS
-    "src/Daemons/Window/*.h"
+    "src/Daemons/WindowDaemon/*.h"
 )
 file(GLOB EssexEngineWindowDaemon_SRC
     ${EssexEngineWindowDaemon_HEADERS}
-    "src/Daemons/Window/*.cpp"
+    "src/Daemons/WindowDaemon/*.cpp"
 )
 
 #setup headers
