@@ -29,7 +29,7 @@ void EssexEngine::Daemons::Window::WindowDaemon::RepaintWindows() {
     }
 }
 
-EssexEngine::UniquePointer<EssexEngine::Daemons::Window::IWindow> EssexEngine::Daemons::Window::WindowDaemon::CreateWindow(WindowDef def) {
+EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IWindow> EssexEngine::Daemons::Window::WindowDaemon::CreateWindow(WindowDef def) {
     if(HasDriver()) {
         return GetDriver()->CreateWindow(def);
     } else {
@@ -38,19 +38,19 @@ EssexEngine::UniquePointer<EssexEngine::Daemons::Window::IWindow> EssexEngine::D
     }
 }
 
-void EssexEngine::Daemons::Window::WindowDaemon::AddButton(EssexEngine::SmartPointer<EssexEngine::Daemons::Window::IWindow> window, ButtonDef def) {
+void EssexEngine::Daemons::Window::WindowDaemon::AddButton(EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IWindow> window, ButtonDef def) {
     if(HasDriver()) {
         GetDriver()->AddButton(window, def);
     }
 }
 
-void EssexEngine::Daemons::Window::WindowDaemon::AddLabel(EssexEngine::SmartPointer<EssexEngine::Daemons::Window::IWindow> window, LabelDef def) {
+void EssexEngine::Daemons::Window::WindowDaemon::AddLabel(EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IWindow> window, LabelDef def) {
     if(HasDriver()) {
         GetDriver()->AddLabel(window, def);
     }
 }
 
-void EssexEngine::Daemons::Window::WindowDaemon::CloseWindow(EssexEngine::SmartPointer<EssexEngine::Daemons::Window::IWindow> window) {
+void EssexEngine::Daemons::Window::WindowDaemon::CloseWindow(EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IWindow> window) {
     if(HasDriver()) {
         GetDriver()->CloseWindow(window);
     }

@@ -12,6 +12,7 @@
 
 #include <EssexEngineWindowDaemon/IWindowDriver.h>
 #include <EssexEngineCore/BaseDaemon.h>
+#include <EssexEngineCore/LogDaemon.h>
 
 namespace EssexEngine{
 namespace Daemons{
@@ -23,8 +24,8 @@ namespace Window{
         ~WindowDaemon();
         
         void Init() {
-            if(GetContext()->HasDriver<Core::Logging::ILogDriver>()) {
-                GetContext()->GetDriver<Core::Logging::ILogDriver>()->LogLine(
+            if(GetContext()->HasDaemon<Core::Logging::LogDaemon>()) {
+                GetContext()->GetDaemon<Core::Logging::LogDaemon>()->LogLine(
                     "Loading Daemon [%s] [%s]",
                     GetDaemonName().c_str(),
                     GetDaemonVersion().c_str()
@@ -35,10 +36,10 @@ namespace Window{
         std::string GetDaemonVersion() { return ESSEX_ENGINE_VERSION; }
 
         void RepaintWindows();
-        UniquePointer<IWindow> CreateWindow(WindowDef def);
-        void AddButton(SmartPointer<IWindow> window, ButtonDef def);
-        void AddLabel(SmartPointer<IWindow> window, LabelDef def);
-        void CloseWindow(SmartPointer<IWindow> window);
+        WeakPointer<IWindow> CreateWindow(WindowDef def);
+        void AddButton(WeakPointer<IWindow> window, ButtonDef def);
+        void AddLabel(WeakPointer<IWindow> window, LabelDef def);
+        void CloseWindow(WeakPointer<IWindow> window);
     private:
     };
 }}};
