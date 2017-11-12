@@ -18,6 +18,15 @@ namespace Daemons{
 namespace Window{
     struct WindowDef
     {
+        WindowDef(std::string _Title, int _X, int _Y, int _Width, int _Height, std::function<void()> _OnClose) {
+            Title = _Title;
+            X = _X;
+            Y = _Y;
+            Width = _Width;
+            Height = _Height;
+            OnClose = _OnClose;
+        }
+
         std::string Title;
         int X;
         int Y;
