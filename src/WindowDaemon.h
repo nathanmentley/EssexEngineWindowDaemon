@@ -12,6 +12,7 @@
 
 #include <EssexEngineWindowDaemon/IWindowDriver.h>
 #include <EssexEngineCore/BaseDaemon.h>
+#include <EssexEngineCore/UniquePointer.h>
 #include <EssexEngineCore/LogDaemon.h>
 
 namespace EssexEngine{
@@ -36,7 +37,7 @@ namespace Window{
         std::string GetDaemonVersion() { return ESSEX_ENGINE_VERSION; }
 
         void RepaintWindows();
-        WeakPointer<IWindow> CreateWindow(WindowDef def);
+        UniquePointer<IWindow> CreateWindow(WindowDef def);
         void AddButton(WeakPointer<IWindow> window, ButtonDef def);
         void AddLabel(WeakPointer<IWindow> window, LabelDef def);
         void CloseWindow(WeakPointer<IWindow> window);

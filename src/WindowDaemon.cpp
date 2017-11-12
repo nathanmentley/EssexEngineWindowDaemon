@@ -29,12 +29,12 @@ void EssexEngine::Daemons::Window::WindowDaemon::RepaintWindows() {
     }
 }
 
-EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IWindow> EssexEngine::Daemons::Window::WindowDaemon::CreateWindow(WindowDef def) {
+EssexEngine::UniquePointer<EssexEngine::Daemons::Window::IWindow> EssexEngine::Daemons::Window::WindowDaemon::CreateWindow(WindowDef def) {
     if(HasDriver()) {
-        return GetDriver()->CreateWindow(def);
+        return UniquePointer<IWindow>(GetDriver()->CreateWindow(def));
     } else {
         //TODO: throw error / Setup error system
-        return 0;
+        return UniquePointer<IWindow>();
     }
 }
 
