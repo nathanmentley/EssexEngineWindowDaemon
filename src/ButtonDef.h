@@ -18,6 +18,15 @@ namespace Daemons{
 namespace Window{
     struct ButtonDef
     {
+        ButtonDef(std::string _Title, int _X, int _Y, int _Width, int _Height, std::function<void()> _OnClick) {
+            Title = _Title;
+            X = _X;
+            Y = _Y;
+            Width = _Width;
+            Height = _Height;
+            OnClick = _OnClick;
+        }
+
         std::string Title;
         int X;
         int Y;

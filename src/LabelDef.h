@@ -17,6 +17,14 @@ namespace Daemons{
 namespace Window{
     struct LabelDef
     {
+        LabelDef(std::string _Content, int _X, int _Y, int _Width, int _Height) {
+            Content = _Content;
+            X = _X;
+            Y = _Y;
+            Width = _Width;
+            Height = _Height;
+        }
+
         std::string Content;
         int X;
         int Y;

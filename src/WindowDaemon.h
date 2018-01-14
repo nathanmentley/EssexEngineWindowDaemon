@@ -37,9 +37,9 @@ namespace Window{
         std::string GetDaemonVersion() { return ESSEX_ENGINE_VERSION; }
 
         void RepaintWindows();
-        UniquePointer<IWindow> CreateWindow(WindowDef def);
-        void AddButton(WeakPointer<IWindow> window, ButtonDef def);
-        void AddLabel(WeakPointer<IWindow> window, LabelDef def);
+        UniquePointer<IWindow> CreateWindow(WeakPointer<WindowDef> def);
+        void AddButton(WeakPointer<IWindow> window, WeakPointer<ButtonDef> def);
+        void AddLabel(WeakPointer<IWindow> window, WeakPointer<LabelDef> def);
         void CloseWindow(WeakPointer<IWindow> window);
     private:
     };
