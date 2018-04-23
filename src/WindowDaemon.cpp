@@ -55,3 +55,29 @@ void EssexEngine::Daemons::Window::WindowDaemon::CloseWindow(EssexEngine::WeakPo
         GetDriver()->CloseWindow(window);
     }
 }
+
+void EssexEngine::Daemons::Window::WindowDaemon::RepaintCanvas(EssexEngine::WeakPointer<EssexEngine::Daemons::Window::IRenderContext> context) {
+    if(HasDriver()) {
+        GetDriver()->RepaintCanvas(context);
+    }
+}
+
+int EssexEngine::Daemons::Window::WindowDaemon::GetScreenWidth(WeakPointer<Window::IRenderContext> target)
+{
+    return GetDriver()->GetScreenWidth(target);
+}
+
+int EssexEngine::Daemons::Window::WindowDaemon::GetScreenHeight(WeakPointer<Window::IRenderContext> target)
+{
+    return GetDriver()->GetScreenHeight(target);
+}
+
+EssexEngine::UniquePointer<EssexEngine::Daemons::Window::IRenderContext>  EssexEngine::Daemons::Window::WindowDaemon::AddCanvas(WeakPointer<IWindow> window, WeakPointer<CanvasDef> def) {
+    if(HasDriver()) {
+        return UniquePointer<IRenderContext>(GetDriver()->AddCanvas(window, def));
+    } else {
+        //TODO: throw error / Setup error system
+        return UniquePointer<IRenderContext>();
+    }
+}
+

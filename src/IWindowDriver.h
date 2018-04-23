@@ -14,9 +14,13 @@
 
 #include <EssexEngineCore/WeakPointer.h>
 #include <EssexEngineCore/IDriver.h>
+
 #include <EssexEngineWindowDaemon/IWindow.h>
+#include <EssexEngineWindowDaemon/IRenderContext.h>
+
 #include <EssexEngineWindowDaemon/WindowDef.h>
 #include <EssexEngineWindowDaemon/ButtonDef.h>
+#include <EssexEngineWindowDaemon/CanvasDef.h>
 #include <EssexEngineWindowDaemon/LabelDef.h>
 
 namespace EssexEngine{
@@ -30,8 +34,12 @@ namespace Window{
         virtual WeakPointer<IWindow> CreateWindow(WeakPointer<WindowDef> def) = 0;
         
         virtual void AddButton(WeakPointer<IWindow> window, WeakPointer<ButtonDef> def) = 0;
-        
         virtual void AddLabel(WeakPointer<IWindow> window, WeakPointer<LabelDef> def) = 0;
+        virtual WeakPointer<IRenderContext> AddCanvas(WeakPointer<IWindow> window, WeakPointer<CanvasDef> def) = 0;
+        
+        virtual void RepaintCanvas(WeakPointer<IRenderContext> context) = 0;
+        virtual int GetScreenWidth(WeakPointer<IRenderContext> target) = 0;
+        virtual int GetScreenHeight(WeakPointer<IRenderContext> target) = 0;
         
         virtual void CloseWindow(WeakPointer<IWindow> window) = 0;
     private:
