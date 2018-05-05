@@ -15,14 +15,6 @@ EssexEngine::Daemons::Window::WindowDaemon::WindowDaemon(WeakPointer<Context> _c
 
 EssexEngine::Daemons::Window::WindowDaemon::~WindowDaemon() {}
 
-extern "C" {
-    void daemon_init(EssexEngine::Context* context) {
-        context->RegisterDaemon<EssexEngine::Daemons::Window::WindowDaemon>(
-            new EssexEngine::Daemons::Window::WindowDaemon(context)
-        );
-    }
-}
-
 void EssexEngine::Daemons::Window::WindowDaemon::RepaintWindows() {
     if(HasDriver()) {
         GetDriver()->RepaintWindows();

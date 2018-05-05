@@ -10,10 +10,18 @@
  */
 #pragma once
 
+#include <string>
+
+#include <EssexEngineCore/WeakPointer.h>
+
 namespace EssexEngine{
 namespace Daemons{
 namespace Window{
     class IRenderContext {
         public:
+            virtual ~IRenderContext() {};
+            virtual void RenderToContext(WeakPointer<void> pixels) = 0;
+            virtual int GetHeight() = 0;
+            virtual int GetWidth() = 0;
     };
 }}};
