@@ -17,9 +17,13 @@ using EssexEngine::WeakPointer;
 using EssexEngine::Daemons::Window::WindowDaemon;
 
 extern "C" {
-    void daemon_init(WeakPointer<Context> context) {
+    void* daemon_init(WeakPointer<Context> context) {
+        WindowDaemon* daemon = new WindowDaemon(context);
+
         context->RegisterDaemon<WindowDaemon>(
-            new WindowDaemon(context)
+            daemon
         );
+
+        return daemon;
     }
 }
